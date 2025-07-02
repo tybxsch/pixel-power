@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro Games Vault - Demo Visual</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/retro-style.css">
+</head>
+<body class="fade-in">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-retro fixed-top">
+    <div class="container">
+        <a class="navbar-brand glitch" href="#home">
+            <i class="fas fa-gamepad me-2"></i>
+            Retro Games Vault
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                style="border: 2px solid var(--neon-purple); background: transparent;">
+            <span style="color: var(--neon-purple);">
+                <i class="fas fa-bars"></i>
+            </span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#home">
+                        <i class="fas fa-home me-1"></i>
+                        Início
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#dashboard">
+                        <i class="fas fa-tachometer-alt me-1"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#add-game">
+                        <i class="fas fa-plus-circle me-1"></i>
+                        Adicionar Jogo
+                    </a>
+                </li>
+            </ul>
+            
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <span class="nav-link">
+                        <i class="fas fa-user me-1"></i>
+                        RetroGamer (Demo)
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div style="height: 80px;"></div>
+
+<div class="container">
+    <!-- Hero Section -->
+    <section id="home">
+        <div class="hero-retro">
+            <h1 class="hero-title mb-4">
+                <i class="fas fa-gamepad me-3"></i>
+                Retro Games Vault
+            </h1>
+            <p class="lead mb-4" style="color: rgba(255, 255, 255, 0.9); font-size: 1.3rem;">
+                Preserve suas memórias dos jogos clássicos e crie seu ranking pessoal dos melhores games retrô de todos os tempos!
+            </p>
+            <div class="d-flex flex-column flex-md-row gap-3 justify-content-center">
+                <a href="#dashboard" class="btn btn-retro btn-lg">
+                    <i class="fas fa-tachometer-alt me-2"></i>
+                    Ver Dashboard
+                </a>
+                <a href="#add-game" class="btn btn-retro-secondary btn-lg">
+                    <i class="fas fa-plus-circle me-2"></i>
+                    Adicionar Jogo
+                </a>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="row mt-5 g-4">
+            <div class="col-md-4">
+                <div class="card-retro p-4 h-100 text-center">
+                    <div class="mb-3">
+                        <i class="fas fa-trophy" style="font-size: 3rem; color: var(--neon-yellow);"></i>
+                    </div>
+                    <h3 style="font-size: 1rem;">Ranking Pessoal</h3>
+                    <p style="color: rgba(255, 255, 255, 0.8);">
+                        Crie seu próprio ranking dos jogos clássicos que marcaram sua vida!
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card-retro p-4 h-100 text-center">
+                    <div class="mb-3">
+                        <i class="fas fa-memory" style="font-size: 3rem; color: var(--neon-pink);"></i>
+                    </div>
+                    <h3 style="font-size: 1rem;">Preserve Memórias</h3>
+                    <p style="color: rgba(255, 255, 255, 0.8);">
+                        Guarde suas lembranças dos jogos da sua infância!
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card-retro p-4 h-100 text-center">
+                    <div class="mb-3">
+                        <i class="fas fa-gamepad" style="font-size: 3rem; color: var(--neon-green);"></i>
+                    </div>
+                    <h3 style="font-size: 1rem;">Multiplataforma</h3>
+                    <p style="color: rgba(255, 255, 255, 0.8);">
+                        Super Nintendo, Mega Drive, PlayStation e muito mais!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Demo -->
+    <section id="dashboard" class="mt-5">
+        <div class="hero-retro">
+            <h1 class="mb-3">
+                <i class="fas fa-tachometer-alt me-3"></i>
+                Dashboard Demo
+            </h1>
+            <p class="lead" style="color: rgba(255, 255, 255, 0.9);">
+                Assim ficaria sua coleção de jogos!
+            </p>
+        </div>
+
+        <!-- Estatísticas -->
+        <div class="row mt-5 g-4">
+            <div class="col-md-4">
+                <div class="card-retro p-4 text-center">
+                    <i class="fas fa-gamepad mb-3" style="font-size: 3rem; color: var(--neon-blue);"></i>
+                    <h3 style="font-size: 2rem; color: var(--neon-blue);">25</h3>
+                    <p style="color: rgba(255, 255, 255, 0.8);">Jogos Cadastrados</p>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card-retro p-4 text-center">
+                    <i class="fas fa-star mb-3" style="font-size: 3rem; color: var(--neon-yellow);"></i>
+                    <h3 style="font-size: 2rem; color: var(--neon-yellow);">8.9</h3>
+                    <p style="color: rgba(255, 255, 255, 0.8);">Nota Média</p>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card-retro p-4 text-center">
+                    <i class="fas fa-tv mb-3" style="font-size: 3rem; color: var(--neon-green);"></i>
+                    <h3 style="font-size: 2rem; color: var(--neon-green);">6</h3>
+                    <p style="color: rgba(255, 255, 255, 0.8);">Plataformas</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Jogos de Exemplo -->
+        <div class="row mt-5 g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="game-card p-3 h-100">
+                    <div class="d-flex align-items-center justify-content-center mb-3" 
+                         style="height: 200px; background: var(--gradient-bg); border-radius: 10px; border: 2px dashed var(--neon-blue);">
+                        <i class="fas fa-gamepad" style="font-size: 4rem; color: var(--neon-blue);"></i>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <h5 style="color: var(--neon-green);">Super Mario World</h5>
+                        <span class="game-rating">9.5</span>
+                    </div>
+                    
+                    <div class="row g-2 mb-3">
+                        <div class="col-6">
+                            <small style="color: var(--neon-blue); font-weight: bold;">Plataforma:</small><br>
+                            <small style="color: rgba(255, 255, 255, 0.8);">Super Nintendo</small>
+                        </div>
+                        <div class="col-6">
+                            <small style="color: var(--neon-blue); font-weight: bold;">Ano:</small><br>
+                            <small style="color: rgba(255, 255, 255, 0.8);">1990</small>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <small style="color: var(--neon-blue); font-weight: bold;">Comentário:</small>
+                        <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem; margin-top: 0.5rem;">
+                            O melhor jogo de plataforma! Yoshi é incrível!
+                        </p>
+                    </div>
+                    
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-retro-secondary btn-sm flex-fill" onclick="showRetroAlert('Função de editar (demo)', 'success')">
+                            <i class="fas fa-edit me-1"></i>
+                            Editar
+                        </button>
+                        <button class="btn btn-outline-danger btn-sm" onclick="showRetroAlert('Função de excluir (demo)', 'error')">
+                            <i class="fas fa-trash me-1"></i>
+                            Excluir
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="game-card p-3 h-100">
+                    <div class="d-flex align-items-center justify-content-center mb-3" 
+                         style="height: 200px; background: var(--gradient-bg); border-radius: 10px; border: 2px dashed var(--neon-green);">
+                        <i class="fas fa-running" style="font-size: 4rem; color: var(--neon-green);"></i>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <h5 style="color: var(--neon-green);">Sonic the Hedgehog</h5>
+                        <span class="game-rating">9.0</span>
+                    </div>
+                    
+                    <div class="row g-2 mb-3">
+                        <div class="col-6">
+                            <small style="color: var(--neon-blue); font-weight: bold;">Plataforma:</small><br>
+                            <small style="color: rgba(255, 255, 255, 0.8);">Mega Drive</small>
+                        </div>
+                        <div class="col-6">
+                            <small style="color: var(--neon-blue); font-weight: bold;">Ano:</small><br>
+                            <small style="color: rgba(255, 255, 255, 0.8);">1991</small>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <small style="color: var(--neon-blue); font-weight: bold;">Comentário:</small>
+                        <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem; margin-top: 0.5rem;">
+                            Velocidade pura! Green Hill Zone é inesquecível!
+                        </p>
+                    </div>
+                    
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-retro-secondary btn-sm flex-fill" onclick="showRetroAlert('Função de editar (demo)', 'success')">
+                            <i class="fas fa-edit me-1"></i>
+                            Editar
+                        </button>
+                        <button class="btn btn-outline-danger btn-sm" onclick="showRetroAlert('Função de excluir (demo)', 'error')">
+                            <i class="fas fa-trash me-1"></i>
+                            Excluir
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="game-card p-3 h-100">
+                    <div class="d-flex align-items-center justify-content-center mb-3" 
+                         style="height: 200px; background: var(--gradient-bg); border-radius: 10px; border: 2px dashed var(--neon-purple);">
+                        <i class="fas fa-compact-disc" style="font-size: 4rem; color: var(--neon-purple);"></i>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <h5 style="color: var(--neon-green);">Final Fantasy VII</h5>
+                        <span class="game-rating">10.0</span>
+                    </div>
+                    
+                    <div class="row g-2 mb-3">
+                        <div class="col-6">
+                            <small style="color: var(--neon-blue); font-weight: bold;">Plataforma:</small><br>
+                            <small style="color: rgba(255, 255, 255, 0.8);">PlayStation</small>
+                        </div>
+                        <div class="col-6">
+                            <small style="color: var(--neon-blue); font-weight: bold;">Ano:</small><br>
+                            <small style="color: rgba(255, 255, 255, 0.8);">1997</small>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <small style="color: var(--neon-blue); font-weight: bold;">Comentário:</small>
+                        <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem; margin-top: 0.5rem;">
+                            Obra prima absoluta! Cloud e Sephiroth são lendários!
+                        </p>
+                    </div>
+                    
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-retro-secondary btn-sm flex-fill" onclick="showRetroAlert('Função de editar (demo)', 'success')">
+                            <i class="fas fa-edit me-1"></i>
+                            Editar
+                        </button>
+                        <button class="btn btn-outline-danger btn-sm" onclick="showRetroAlert('Função de excluir (demo)', 'error')">
+                            <i class="fas fa-trash me-1"></i>
+                            Excluir
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulário Demo -->
+    <section id="add-game" class="mt-5">
+        <div class="hero-retro">
+            <h1 class="mb-3">
+                <i class="fas fa-plus-circle me-3"></i>
+                Adicionar Novo Jogo
+            </h1>
+            <p class="lead" style="color: rgba(255, 255, 255, 0.9);">
+                Formulário para adicionar jogos à sua coleção!
+            </p>
+        </div>
+
+        <div class="row justify-content-center mt-5">
+            <div class="col-lg-8">
+                <div class="card-retro p-4">
+                    <form class="form-retro">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label class="form-label">
+                                    <i class="fas fa-gamepad me-2"></i>
+                                    Título do Jogo *
+                                </label>
+                                <input type="text" class="form-control" 
+                                       placeholder="Ex: Street Fighter II" value="Street Fighter II">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">
+                                    <i class="fas fa-tv me-2"></i>
+                                    Plataforma *
+                                </label>
+                                <select class="form-control">
+                                    <option>Arcade</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">
+                                    <i class="fas fa-calendar me-2"></i>
+                                    Ano *
+                                </label>
+                                <input type="number" class="form-control" value="1991">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">
+                                    <i class="fas fa-tags me-2"></i>
+                                    Gênero *
+                                </label>
+                                <select class="form-control">
+                                    <option>Luta</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">
+                                    <i class="fas fa-star me-2"></i>
+                                    Sua Nota (0-10) *
+                                </label>
+                                <input type="number" class="form-control" value="9.2" 
+                                       min="0" max="10" step="0.1">
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label">
+                                    <i class="fas fa-comment me-2"></i>
+                                    Comentário Pessoal
+                                </label>
+                                <textarea class="form-control" rows="3">Definiu o gênero de jogos de luta! Ryu vs Ken é épico!</textarea>
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <button type="button" class="btn btn-retro btn-lg me-3" 
+                                    onclick="showRetroAlert('Jogo adicionado com sucesso! 🎮', 'success')">
+                                <i class="fas fa-save me-2"></i>
+                                Adicionar à Coleção
+                            </button>
+                            <a href="#dashboard" class="btn btn-retro-secondary btn-lg">
+                                <i class="fas fa-list me-2"></i>
+                                Ver Coleção
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Footer -->
+<footer class="mt-5" style="background: var(--card-bg); border-top: 2px solid var(--neon-purple); padding: 2rem 0;">
+    <div class="container text-center">
+        <h5 style="color: var(--neon-purple); font-family: 'Press Start 2P', cursive;">
+            <i class="fas fa-gamepad me-2"></i>
+            Retro Games Vault - Demo Visual
+        </h5>
+        <p class="mt-3" style="color: rgba(255, 255, 255, 0.8);">
+            Esta é uma demonstração visual do site. Com PHP instalado, todas as funcionalidades estarão disponíveis!
+        </p>
+        <p style="color: rgba(255, 255, 255, 0.6);">
+            💡 Dica: Tente o Konami Code: ↑↑↓↓←→←→BA
+        </p>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/retro-effects.js"></script>
+
+<script>
+// Navegação suave
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+});
+
+// Boas-vindas
+setTimeout(() => {
+    showRetroAlert('🎮 Bem-vinda ao Demo Visual! Todas as animações e efeitos estão funcionando!', 'success');
+}, 2000);
+
+setTimeout(() => {
+    showRetroAlert('💡 Dica: Tente o Konami Code: ↑↑↓↓←→←→BA', 'success');
+}, 8000);
+</script>
+
+</body>
+</html> 
