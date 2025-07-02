@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="<?php echo SITE_URL; ?>/assets/css/retro-style.css">
+    <link rel="stylesheet" href="<?php echo getAssetPath('assets/css/retro-style.css'); ?>">
     
     <!-- Meta tags -->
     <meta name="description" content="Retro Games Vault - Seu ranking pessoal de jogos clássicos dos anos 80 e 90">
