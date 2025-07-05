@@ -5,11 +5,11 @@ session_start();
 define('DB_HOST', 'localhost:3306');
 define('DB_NAME', 'pixel_power');
 define('DB_USER', 'root');
-define('DB_PASS', '123456');
+define('DB_PASS', 'senha123456');
 
 // Configurações do site
-define('SITE_NAME', 'Retro Games Vault');
-define('SITE_URL', 'http://localhost/pixel-power');
+define('SITE_NAME', 'Pixel Power');
+define('SITE_URL', 'http://localhost:3000');
 
 // Função para verificar se usuário está logado
 function isLoggedIn() {

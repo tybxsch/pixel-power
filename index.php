@@ -11,7 +11,7 @@ $page_title = 'Início';
     <div class="hero-retro">
         <h1 class="hero-title mb-4">
             <i class="fas fa-gamepad me-3"></i>
-            Retro Games Vault
+            Pixel Power
         </h1>
         <p class="lead mb-4" style="color: rgba(255, 255, 255, 0.9); font-size: 1.3rem;">
             Preserve suas memórias dos jogos clássicos e crie seu ranking pessoal dos melhores games retrô de todos os tempos!
@@ -44,7 +44,7 @@ $page_title = 'Início';
         <div class="col-12">
             <h2 class="text-center mb-5">
                 <i class="fas fa-star me-2"></i>
-                Por que usar o Retro Games Vault?
+                Por que usar o Pixel Power?
             </h2>
         </div>
     </div>

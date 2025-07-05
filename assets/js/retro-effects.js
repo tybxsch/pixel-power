@@ -272,7 +272,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.head.appendChild(style);
     }
 
-    console.log('🎮 Retro Games Vault carregado! Digite ↑↑↓↓←→←→BA para ativar o Easter Egg! 🎮');
+    console.log('🎮 Pixel Power carregado! Digite ↑↑↓↓←→←→BA para ativar o Easter Egg! 🎮');
 });
 
 // Função global para loading

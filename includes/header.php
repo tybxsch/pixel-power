@@ -15,9 +15,9 @@
     <link rel="stylesheet" href="<?php echo getAssetPath('assets/css/retro-style.css'); ?>">
     
     <!-- Meta tags -->
-    <meta name="description" content="Retro Games Vault - Seu ranking pessoal de jogos clássicos dos anos 80 e 90">
-    <meta name="keywords" content="retro games, jogos clássicos, ranking, super nintendo, mega drive, playstation">
-    <meta name="author" content="Retro Games Vault">
+    <meta name="description" content="Pixel Power - Seu ranking pessoal de jogos clássicos dos anos 80 e 90">
+    <meta name="keywords" content="jogos clássicos, ranking, super nintendo, mega drive, playstation">
+    <meta name="author" content="Pixel Power">
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="<?php echo SITE_URL; ?>/assets/images/favicon.ico">

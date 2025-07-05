@@ -11,7 +11,7 @@ $page_title = 'Sobre';
     <div class="hero-retro">
         <h1 class="mb-4">
             <i class="fas fa-info-circle me-3"></i>
-            Sobre o Retro Games Vault
+            Sobre o Pixel Power
         </h1>
         <p class="lead" style="color: rgba(255, 255, 255, 0.9);">
             Uma homenagem aos jogos que definiram gerações e marcaram a história dos videogames!
@@ -27,7 +27,7 @@ $page_title = 'Sobre';
                     Nosso Objetivo
                 </h2>
                 <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.1rem; line-height: 1.8;">
-                    O <strong style="color: var(--neon-purple);">Retro Games Vault</strong> foi criado para ser o 
+                    O <strong style="color: var(--neon-purple);">Pixel Power</strong> foi criado para ser o 
                     lugar perfeito onde gamers apaixonados pelos clássicos podem preservar suas memórias e 
                     criar rankings pessoais dos jogos que marcaram suas vidas.
                 </p>

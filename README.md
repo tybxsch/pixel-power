@@ -1,4 +1,4 @@
-# 🎮 Retro Games Vault
+# 🎮 Pixel Power
 
 Um site completo para catalogar e criar rankings pessoais de jogos retrô clássicos dos anos 80, 90 e início dos 2000!
 
@@ -24,7 +24,7 @@ Um site completo para catalogar e criar rankings pessoais de jogos retrô cláss
 ## 📁 Estrutura do Projeto
 
 ```
-retro-games-vault/
+pixel-power/
 ├── assets/
 │   ├── css/
 │   │   └── retro-style.css      # Estilos retrô customizados
@@ -94,7 +94,7 @@ retro-games-vault/
 4. **Configure o servidor web**
    - Coloque os arquivos na pasta do servidor web (htdocs, www, etc.)
    - Certifique-se de que o PHP está configurado corretamente
-   - Acesse via navegador: `http://localhost/retro-games-vault/`
+   - Acesse via navegador: `http://localhost:xxxx/`
 
 ## 👤 Conta de Demonstração
 

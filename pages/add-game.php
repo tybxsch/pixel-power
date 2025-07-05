@@ -53,6 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $error_message = 'Erro ao adicionar jogo. Tente novamente!';
             }
         } catch (PDOException $e) {
+            echo $e->getMessage();
             $error_message = 'Erro no sistema. Tente novamente!';
         }
     }
