@@ -45,7 +45,7 @@ try {
     <div class="hero-retro">
         <h1 class="mb-3">
             <i class="fas fa-tachometer-alt me-3"></i>
-            Dashboard do <?php echo htmlspecialchars($_SESSION['username']); ?>
+            Dashboard de <?php echo htmlspecialchars($_SESSION['username']); ?>
         </h1>
         <p class="lead" style="color: rgba(255, 255, 255, 0.9);">
             Gerencie sua coleção pessoal de jogos retrô!
