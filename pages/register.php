@@ -154,7 +154,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <div class="d-grid mb-4">
                             <button type="submit" class="btn btn-retro btn-lg">
                                 <i class="fas fa-gamepad me-2"></i>
-                                Criar Conta Gamer
+                                Criar Conta
                             </button>
                         </div>
                     </form>
