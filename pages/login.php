@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="hero-retro text-center mb-4">
                 <h1 class="mb-3">
                     <i class="fas fa-sign-in-alt me-2"></i>
-                    Player Login
+                    Entrar
                 </h1>
                 <p style="color: rgba(255, 255, 255, 0.8);">
                     Entre no seu universo de jogos retrô!
@@ -104,23 +104,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </a>
                 </div>
             </div>
-
-            <div class="card-retro p-4 mt-4">
-                <h5 style="color: var(--neon-green); text-align: center; margin-bottom: 1rem;">
-                    <i class="fas fa-lightbulb me-2"></i>
-                    Dica de Teste
-                </h5>
-                <div style="background: rgba(0, 255, 65, 0.1); border: 1px solid var(--neon-green); border-radius: 8px; padding: 1rem;">
-                    <p style="color: rgba(255, 255, 255, 0.9); margin: 0; text-align: center;">
-                        <strong>Usuário:</strong> retrogamer<br>
-                        <strong>Senha:</strong> password<br>
-                        <small style="color: rgba(255, 255, 255, 0.7);">
-                            (Conta de demonstração com jogos de exemplo)
-                        </small>
-                    </p>
-                </div>
-            </div>
-
             <div class="text-center mt-4">
                 <a href="../index.php" style="color: var(--neon-blue); text-decoration: none;">
                     <i class="fas fa-arrow-left me-2"></i>

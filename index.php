@@ -7,7 +7,6 @@ $page_title = 'Início';
 <?php include 'includes/navbar.php'; ?>
 
 <div class="container">
-    <!-- Hero Section -->
     <div class="hero-retro">
         <h1 class="hero-title mb-4">
             <i class="fas fa-gamepad me-3"></i>
@@ -39,7 +38,6 @@ $page_title = 'Início';
         </div>
     </div>
 
-    <!-- Features Section -->
     <div class="row mt-5">
         <div class="col-12">
             <h2 class="text-center mb-5">
@@ -90,7 +88,6 @@ $page_title = 'Início';
         </div>
     </div>
 
-    <!-- Platforms Section -->
     <div class="row mt-5">
         <div class="col-12">
             <h2 class="text-center mb-5">
@@ -139,7 +136,6 @@ $page_title = 'Início';
         </div>
     </div>
 
-    <!-- Games Preview Section -->
     <?php if (isLoggedIn()): ?>
         <div class="row mt-5">
             <div class="col-12">
@@ -151,7 +147,6 @@ $page_title = 'Início';
         </div>
 
         <?php
-        // Buscar os últimos 3 jogos do usuário
         try {
             $stmt = $pdo->prepare("
                 SELECT * FROM games 
@@ -228,7 +223,6 @@ $page_title = 'Início';
         <?php endif; ?>
     <?php endif; ?>
 
-    <!-- CTA Section -->
     <?php if (!isLoggedIn()): ?>
         <div class="row mt-5">
             <div class="col-12">

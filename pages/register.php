@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="hero-retro text-center mb-4">
                 <h1 class="mb-3">
                     <i class="fas fa-user-plus me-2"></i>
-                    Player Registration
+                    Criar conta
                 </h1>
                 <p style="color: rgba(255, 255, 255, 0.8);">
                     Junte-se à comunidade dos gamers retrô!

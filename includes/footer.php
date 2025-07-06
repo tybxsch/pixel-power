@@ -28,10 +28,10 @@
             <div class="row">
                 <div class="col-12 text-center">
                     <p style="color: rgba(255, 255, 255, 0.6); margin: 0;">
-                        © <?php echo date('Y'); ?> <?php echo SITE_NAME; ?>. Feito com 💜 para os amantes dos jogos retrô.
+                        © Desenvolvida para fins educativos. Pontifícia Universidade Católica do Paraná.
                     </p>
                     <p style="color: rgba(255, 255, 255, 0.4); font-size: 0.8rem; margin-top: 0.5rem;">
-                        <i class="fas fa-code"></i> Desenvolvido com PHP puro e muito amor pelos games clássicos
+                        <i class="fas fa-code"></i> Eduarda Tybusch, 2025.
                     </p>
                 </div>
             </div>

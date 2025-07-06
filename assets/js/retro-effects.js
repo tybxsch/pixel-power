@@ -1,48 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-    function typeWriter(element, text, speed = 100) {
-        let i = 0;
-        element.innerHTML = '';
-        function type() {
-            if (i < text.length) {
-                element.innerHTML += text.charAt(i);
-                i++;
-                setTimeout(type, speed);
-            }
-        }
-        type();
-    }
-
-    const mainTitle = document.querySelector('.hero-title');
-    if (mainTitle) {
-        const originalText = mainTitle.textContent;
-        typeWriter(mainTitle, originalText, 150);
-    }
-
-    const cards = document.querySelectorAll('.card-retro, .game-card');
-    cards.forEach(card => {
-        card.addEventListener('mouseenter', function () {
-            this.style.transform = 'translateY(-10px) scale(1.02)';
-        });
-
-        card.addEventListener('mouseleave', function () {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
-    });
-
-    function randomGlitch() {
-        const glitchElements = document.querySelectorAll('.glitch');
-        glitchElements.forEach(element => {
-            if (Math.random() < 0.1) {
-                element.style.animation = 'glitch 0.3s ease-in-out';
-                setTimeout(() => {
-                    element.style.animation = '';
-                }, 300);
-            }
-        });
-    }
-
-    setInterval(randomGlitch, 3000);
-
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -55,73 +11,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
-
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver(function (entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in');
-            }
-        });
-    }, observerOptions);
-
-    document.querySelectorAll('.card-retro, .game-card, .hero-retro').forEach(el => {
-        observer.observe(el);
-    });
-
-    function createParticle() {
-        const particle = document.createElement('div');
-        particle.style.cssText = `
-            position: fixed;
-            width: 2px;
-            height: 2px;
-            background: var(--neon-green);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: -1;
-            top: ${Math.random() * 100}vh;
-            left: ${Math.random() * 100}vw;
-            animation: particle-float 8s linear infinite;
-            opacity: 0.3;
-        `;
-        document.body.appendChild(particle);
-
-        setTimeout(() => {
-            if (particle.parentNode) {
-                particle.parentNode.removeChild(particle);
-            }
-        }, 8000);
-    }
-
-    setInterval(createParticle, 2000);
-
-    if (!document.querySelector('#particle-style')) {
-        const style = document.createElement('style');
-        style.id = 'particle-style';
-        style.textContent = `
-            @keyframes particle-float {
-                0% {
-                    transform: translateY(0) rotate(0deg);
-                    opacity: 0;
-                }
-                10% {
-                    opacity: 0.3;
-                }
-                90% {
-                    opacity: 0.3;
-                }
-                100% {
-                    transform: translateY(-100vh) rotate(360deg);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(style);
-    }
 
     const forms = document.querySelectorAll('form');
     forms.forEach(form => {
@@ -180,7 +69,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }, 5000);
 
-        const closeBtn = alertDiv.querySelector('.btn-close');
         alertDiv.querySelector('.btn-close').addEventListener('click', () => {
             alertDiv.style.animation = 'slideOutRight 0.5s ease-in';
             setTimeout(() => {

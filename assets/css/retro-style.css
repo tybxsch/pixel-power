@@ -101,7 +101,6 @@ h3 {
 .nav-link:hover {
     color: var(--neon-green) !important;
     text-shadow: var(--text-shadow) var(--neon-green);
-    transform: translateY(-2px);
 }
 
 .btn-retro {
@@ -120,7 +119,6 @@ h3 {
 .btn-retro:hover {
     background: linear-gradient(45deg, var(--neon-pink), var(--neon-purple));
     box-shadow: 0 0 25px rgba(255, 0, 128, 0.6);
-    transform: translateY(-3px);
     color: white;
 }
 
@@ -146,23 +144,7 @@ h3 {
     position: relative;
 }
 
-.card-retro::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    transition: left 0.5s;
-}
-
-.card-retro:hover::before {
-    left: 100%;
-}
-
 .card-retro:hover {
-    transform: translateY(-10px);
     box-shadow: 0 0 40px rgba(0, 191, 255, 0.4);
     border-color: var(--neon-green);
 }
@@ -210,23 +192,6 @@ h3 {
 .hero-retro * {
     position: relative;
     z-index: 1;
-}
-
-.hero-retro::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(179, 0, 255, 0.1) 0%, transparent 70%);
-    animation: rotate 10s linear infinite;
-    z-index: -1;
-}
-
-@keyframes rotate {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
 }
 
 .game-card {
@@ -351,7 +316,6 @@ h3 {
 
 .password-toggle-btn:hover {
     color: var(--neon-green) !important;
-    transform: translateY(-50%) scale(1.1);
     text-shadow: 0 0 8px var(--neon-green);
     background: rgba(0, 255, 65, 0.1) !important;
 }
@@ -389,4 +353,29 @@ h3 {
 
 .password-toggle-btn.clicked {
     animation: password-toggle-pulse 0.3s ease;
+}
+
+.btn:hover,
+.btn-retro:hover,
+.btn-retro-secondary:hover,
+.btn-outline-danger:hover,
+.btn-sm:hover,
+.btn-lg:hover {
+    transform: none !important;
+}
+
+.card:hover {
+    transform: none !important;
+}
+
+.btn:hover,
+.btn:focus,
+.btn:active,
+.btn-check:checked + .btn,
+.btn-check:active + .btn,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:focus {
+    transform: none !important;
 } 
