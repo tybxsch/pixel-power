@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     function typeWriter(element, text, speed = 100) {
         let i = 0;
         element.innerHTML = '';
@@ -20,11 +20,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const cards = document.querySelectorAll('.card-retro, .game-card');
     cards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
+        card.addEventListener('mouseenter', function () {
             this.style.transform = 'translateY(-10px) scale(1.02)';
         });
-        
-        card.addEventListener('mouseleave', function() {
+
+        card.addEventListener('mouseleave', function () {
             this.style.transform = 'translateY(0) scale(1)';
         });
     });
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
         rootMargin: '0px 0px -50px 0px'
     };
 
-    const observer = new IntersectionObserver(function(entries) {
+    const observer = new IntersectionObserver(function (entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('fade-in');
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const forms = document.querySelectorAll('form');
     forms.forEach(form => {
-        form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', function (e) {
             const requiredFields = form.querySelectorAll('[required]');
             let hasErrors = false;
 
@@ -147,10 +147,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    window.showRetroAlert = function(message, type = 'success') {
+    window.showRetroAlert = function (message, type = 'success') {
         const alertDiv = document.createElement('div');
         const alertClass = type === 'error' ? 'alert-danger-retro' : 'alert-retro';
-        
+
         alertDiv.className = `alert ${alertClass} position-fixed`;
         alertDiv.style.cssText = `
             top: 100px;
@@ -221,21 +221,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let konamiCode = [];
     const sequence = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
-    
-    document.addEventListener('keydown', function(e) {
+
+    document.addEventListener('keydown', function (e) {
         konamiCode.push(e.keyCode);
         if (konamiCode.length > sequence.length) {
             konamiCode.shift();
         }
-        
+
         if (JSON.stringify(konamiCode) === JSON.stringify(sequence)) {
             document.body.style.animation = 'rainbow 2s linear infinite';
             showRetroAlert('🎮 KONAMI CODE ATIVADO! Você é um verdadeiro gamer retrô! 🎮', 'success');
-            
+
             setTimeout(() => {
                 document.body.style.animation = '';
             }, 5000);
-            
+
             konamiCode = [];
         }
     });
@@ -252,15 +252,94 @@ document.addEventListener('DOMContentLoaded', function() {
         document.head.appendChild(style);
     }
 
+    function initPasswordToggle() {
+        const passwordInputs = document.querySelectorAll('input[type="password"]');
+
+        passwordInputs.forEach(input => {
+            const wrapper = document.createElement('div');
+            wrapper.style.position = 'relative';
+            wrapper.style.display = 'inline-block';
+            wrapper.style.width = '100%';
+
+            input.parentNode.insertBefore(wrapper, input);
+            wrapper.appendChild(input);
+
+            const toggleBtn = document.createElement('button');
+            toggleBtn.type = 'button';
+            toggleBtn.className = 'password-toggle-btn';
+            toggleBtn.innerHTML = '<i class="fas fa-eye"></i>';
+            toggleBtn.style.cssText = `
+                position: absolute;
+                right: 12px;
+                top: 50%;
+                transform: translateY(-50%);
+                background: transparent;
+                border: none;
+                color: var(--neon-blue);
+                cursor: pointer;
+                font-size: 1.1rem;
+                padding: 5px;
+                border-radius: 4px;
+                transition: all 0.3s ease;
+                z-index: 10;
+            `;
+
+            toggleBtn.addEventListener('mouseenter', function () {
+                const isVisible = input.type === 'text';
+                this.title = isVisible ? 'Ocultar senha' : 'Mostrar senha';
+            });
+
+            toggleBtn.addEventListener('click', function () {
+                const isPassword = input.type === 'password';
+
+                this.classList.add('clicked');
+                setTimeout(() => {
+                    this.classList.remove('clicked');
+                }, 300);
+
+                if (isPassword) {
+                    input.type = 'text';
+                    this.innerHTML = '<i class="fas fa-eye-slash"></i>';
+                    this.classList.add('password-visible');
+                    this.title = 'Ocultar senha';
+
+                    input.style.borderColor = 'var(--neon-pink)';
+                    input.style.boxShadow = '0 0 15px rgba(255, 0, 128, 0.3)';
+                } else {
+                    input.type = 'password';
+                    this.innerHTML = '<i class="fas fa-eye"></i>';
+                    this.classList.remove('password-visible');
+                    this.title = 'Mostrar senha';
+
+                    input.style.borderColor = 'var(--neon-green)';
+                    input.style.boxShadow = '0 0 15px rgba(0, 255, 65, 0.3)';
+                }
+
+                setTimeout(() => {
+                    input.style.borderColor = '';
+                    input.style.boxShadow = '';
+                }, 1000);
+            });
+
+            toggleBtn.title = 'Mostrar senha';
+
+            wrapper.appendChild(toggleBtn);
+
+            input.style.paddingRight = '45px';
+        });
+    }
+
+    initPasswordToggle();
+
     console.log('🎮 Pixel Power carregado! Digite ↑↑↓↓←→←→BA para ativar o Easter Egg! 🎮');
 });
 
-window.showLoading = function(element) {
+window.showLoading = function (element) {
     const originalContent = element.innerHTML;
     element.innerHTML = '<span class="loading-retro"></span> Carregando...';
     element.disabled = true;
-    
-    return function() {
+
+    return function () {
         element.innerHTML = originalContent;
         element.disabled = false;
     };

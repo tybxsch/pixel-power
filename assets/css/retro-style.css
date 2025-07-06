@@ -331,4 +331,62 @@ h3 {
 
 @keyframes spin {
     to { transform: rotate(360deg); }
+}
+
+.password-toggle-btn {
+    background: transparent !important;
+    border: none !important;
+    color: var(--neon-blue) !important;
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 5px !important;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.password-toggle-btn:hover {
+    color: var(--neon-green) !important;
+    transform: translateY(-50%) scale(1.1);
+    text-shadow: 0 0 8px var(--neon-green);
+    background: rgba(0, 255, 65, 0.1) !important;
+}
+
+.password-toggle-btn:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.password-toggle-btn:focus {
+    outline: none !important;
+    box-shadow: 0 0 0 2px rgba(0, 255, 65, 0.3) !important;
+}
+
+.password-toggle-btn.password-visible {
+    color: var(--neon-pink) !important;
+    text-shadow: 0 0 8px var(--neon-pink);
+}
+
+.password-toggle-btn.password-visible:hover {
+    color: var(--neon-yellow) !important;
+    text-shadow: 0 0 8px var(--neon-yellow);
+    background: rgba(255, 255, 0, 0.1) !important;
+}
+
+.form-retro .form-control[type="password"],
+.form-retro .form-control[type="text"] {
+    padding-right: 45px !important;
+}
+
+@keyframes password-toggle-pulse {
+    0% { transform: translateY(-50%) scale(1); }
+    50% { transform: translateY(-50%) scale(1.2); }
+    100% { transform: translateY(-50%) scale(1); }
+}
+
+.password-toggle-btn.clicked {
+    animation: password-toggle-pulse 0.3s ease;
 } 
