@@ -1,7 +1,6 @@
 <?php
 require_once '../config.php';
 
-// Se já estiver logado, redirecionar
 if (isLoggedIn()) {
     redirect('../pages/dashboard.php');
 }
@@ -10,14 +9,12 @@ $page_title = 'Cadastro';
 $error_message = '';
 $success_message = '';
 
-// Processar cadastro
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = trim($_POST['username'] ?? '');
     $email = trim($_POST['email'] ?? '');
     $password = $_POST['password'] ?? '';
     $confirm_password = $_POST['confirm_password'] ?? '';
     
-    // Validações
     if (empty($username) || empty($email) || empty($password) || empty($confirm_password)) {
         $error_message = 'Por favor, preencha todos os campos!';
     } elseif (strlen($username) < 3) {
@@ -30,21 +27,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $error_message = 'As senhas não coincidem!';
     } else {
         try {
-            // Verificar se usuário ou email já existem
             $stmt = $pdo->prepare("SELECT id FROM users WHERE username = ? OR email = ?");
             $stmt->execute([$username, $email]);
             
             if ($stmt->fetch()) {
                 $error_message = 'Nome de usuário ou email já estão em uso!';
             } else {
-                // Criar usuário
                 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
                 $stmt = $pdo->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
                 
                 if ($stmt->execute([$username, $email, $hashed_password])) {
                     $success_message = 'Conta criada com sucesso! Agora você pode fazer login.';
                     
-                    // Limpar campos após sucesso
                     $_POST = [];
                 } else {
                     $error_message = 'Erro ao criar conta. Tente novamente!';
@@ -63,7 +57,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6 col-lg-5">
-            <!-- Hero Section -->
             <div class="hero-retro text-center mb-4">
                 <h1 class="mb-3">
                     <i class="fas fa-user-plus me-2"></i>
@@ -74,7 +67,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </p>
             </div>
 
-            <!-- Register Form -->
             <div class="card-retro p-4">
                 <?php if ($error_message): ?>
                     <div class="alert alert-danger-retro mb-4">
@@ -179,7 +171,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <?php endif; ?>
             </div>
 
-            <!-- Benefits -->
             <div class="card-retro p-4 mt-4">
                 <h5 style="color: var(--neon-green); text-align: center; margin-bottom: 1rem;">
                     <i class="fas fa-star me-2"></i>
@@ -232,14 +223,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </div>
 
 <script>
-// Validação em tempo real
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('form');
     const password = document.getElementById('password');
     const confirmPassword = document.getElementById('confirm_password');
     const submitBtn = form?.querySelector('button[type="submit"]');
     
-    // Validar senhas em tempo real
     function validatePasswords() {
         if (password.value && confirmPassword.value) {
             if (password.value === confirmPassword.value) {
@@ -257,12 +246,10 @@ document.addEventListener('DOMContentLoaded', function() {
         confirmPassword.addEventListener('input', validatePasswords);
     }
     
-    // Loading no submit
     if (form && submitBtn) {
         form.addEventListener('submit', function() {
             const stopLoading = showLoading(submitBtn);
             
-            // Se houver erro, parar o loading após um tempo
             setTimeout(() => {
                 if (document.querySelector('.alert-danger-retro')) {
                     stopLoading();
@@ -271,7 +258,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Efeito nos inputs
     const inputs = document.querySelectorAll('.form-control');
     inputs.forEach(input => {
         input.addEventListener('focus', function() {

@@ -1,9 +1,7 @@
 <?php
-// Teste de conexão com banco de dados
 echo "<h2>🔍 Teste de Conexão - Pixel Power</h2>";
 echo "<hr>";
 
-// Incluir configurações
 require_once 'config.php';
 
 echo "<h3>📋 Configurações atuais:</h3>";
@@ -17,7 +15,6 @@ echo "</ul>";
 echo "<h3>🔗 Testando conexão...</h3>";
 
 try {
-    // Tentar conectar
     $test_pdo = new PDO(
         "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8mb4",
         DB_USER,
@@ -31,7 +28,6 @@ try {
     
     echo "<p style='color: green; font-weight: bold;'>✅ CONEXÃO ESTABELECIDA COM SUCESSO!</p>";
     
-    // Testar se consegue executar uma query básica
     $stmt = $test_pdo->query("SELECT VERSION() as version");
     $result = $stmt->fetch();
     
@@ -41,7 +37,6 @@ try {
     echo "<li><strong>Status da conexão:</strong> Ativa</li>";
     echo "</ul>";
     
-    // Testar se as tabelas existem
     echo "<h3>🗂️ Verificando tabelas:</h3>";
     $tables = $test_pdo->query("SHOW TABLES")->fetchAll();
     

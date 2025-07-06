@@ -1,12 +1,10 @@
 <?php
 require_once '../config.php';
 
-// Verificar se está logado
 if (!isLoggedIn()) {
     redirect('../pages/login.php');
 }
 
-// Verificar se foi fornecido um ID
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     redirect('../pages/dashboard.php');
 }
@@ -16,7 +14,6 @@ $page_title = 'Editar Jogo';
 $error_message = '';
 $success_message = '';
 
-// Buscar o jogo
 try {
     $stmt = $pdo->prepare("SELECT * FROM games WHERE id = ? AND user_id = ?");
     $stmt->execute([$game_id, $_SESSION['user_id']]);
@@ -29,7 +26,6 @@ try {
     redirect('../pages/dashboard.php');
 }
 
-// Processar formulário de edição
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $title = trim($_POST['title'] ?? '');
     $platform = trim($_POST['platform'] ?? '');
@@ -39,7 +35,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $image_url = trim($_POST['image_url'] ?? '');
     $personal_comment = trim($_POST['personal_comment'] ?? '');
     
-    // Validações
     if (empty($title) || empty($platform) || empty($release_year) || empty($genre) || empty($personal_rating)) {
         $error_message = 'Por favor, preencha todos os campos obrigatórios!';
     } elseif (!is_numeric($release_year) || $release_year < 1970 || $release_year > date('Y')) {
@@ -70,7 +65,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             ])) {
                 $success_message = 'Jogo atualizado com sucesso!';
                 
-                // Atualizar os dados do jogo para refletir as mudanças
                 $game['title'] = $title;
                 $game['platform'] = $platform;
                 $game['release_year'] = $release_year;
@@ -87,7 +81,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-// Listas para os selects
 $platforms = [
     'Super Nintendo', 'Mega Drive', 'PlayStation', 'PlayStation 2', 'Nintendo 64',
     'Game Boy', 'Game Boy Color', 'Game Boy Advance', 'Nintendo DS',
@@ -106,7 +99,7 @@ $genres = [
 <?php include '../includes/navbar.php'; ?>
 
 <div class="container">
-    <!-- Hero Section -->
+    
     <div class="hero-retro">
         <h1 class="mb-3">
             <i class="fas fa-edit me-3"></i>
@@ -119,7 +112,6 @@ $genres = [
 
     <div class="row justify-content-center mt-5">
         <div class="col-lg-8">
-            <!-- Mensagens -->
             <?php if ($error_message): ?>
                 <div class="alert alert-danger-retro mb-4">
                     <i class="fas fa-exclamation-triangle me-2"></i>
@@ -134,11 +126,9 @@ $genres = [
                 </div>
             <?php endif; ?>
 
-            <!-- Formulário -->
             <div class="card-retro p-4">
                 <form method="POST" class="form-retro">
                     <div class="row g-3">
-                        <!-- Título do Jogo -->
                         <div class="col-12">
                             <label for="title" class="form-label">
                                 <i class="fas fa-gamepad me-2"></i>
@@ -153,7 +143,6 @@ $genres = [
                                    required>
                         </div>
 
-                        <!-- Plataforma -->
                         <div class="col-md-6">
                             <label for="platform" class="form-label">
                                 <i class="fas fa-tv me-2"></i>
@@ -170,7 +159,6 @@ $genres = [
                             </select>
                         </div>
 
-                        <!-- Ano de Lançamento -->
                         <div class="col-md-6">
                             <label for="release_year" class="form-label">
                                 <i class="fas fa-calendar me-2"></i>
@@ -187,7 +175,6 @@ $genres = [
                                    required>
                         </div>
 
-                        <!-- Gênero -->
                         <div class="col-md-6">
                             <label for="genre" class="form-label">
                                 <i class="fas fa-tags me-2"></i>
@@ -204,7 +191,6 @@ $genres = [
                             </select>
                         </div>
 
-                        <!-- Nota Pessoal -->
                         <div class="col-md-6">
                             <label for="personal_rating" class="form-label">
                                 <i class="fas fa-star me-2"></i>
@@ -225,7 +211,6 @@ $genres = [
                             </small>
                         </div>
 
-                        <!-- URL da Imagem -->
                         <div class="col-12">
                             <label for="image_url" class="form-label">
                                 <i class="fas fa-image me-2"></i>
@@ -242,7 +227,6 @@ $genres = [
                             </small>
                         </div>
 
-                        <!-- Comentário Pessoal -->
                         <div class="col-12">
                             <label for="personal_comment" class="form-label">
                                 <i class="fas fa-comment me-2"></i>
@@ -259,7 +243,6 @@ $genres = [
                         </div>
                     </div>
 
-                    <!-- Botões -->
                     <div class="row mt-4">
                         <div class="col-12">
                             <div class="d-flex gap-3 justify-content-center">
@@ -277,7 +260,6 @@ $genres = [
                 </form>
             </div>
 
-            <!-- Preview atual -->
             <?php if ($game['image_url'] || $game['personal_comment']): ?>
                 <div class="card-retro p-4 mt-4">
                     <h5 style="color: var(--neon-blue); text-align: center; margin-bottom: 1rem;">
@@ -330,7 +312,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const submitBtn = form.querySelector('button[type="submit"]');
     const ratingInput = document.getElementById('personal_rating');
     
-    // Feedback visual para a nota
     ratingInput.addEventListener('input', function() {
         const value = parseFloat(this.value);
         if (value >= 0 && value <= 10) {
@@ -343,11 +324,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Loading no submit
     form.addEventListener('submit', function() {
         const stopLoading = showLoading(submitBtn);
         
-        // Se houver erro, parar o loading após um tempo
         setTimeout(() => {
             if (document.querySelector('.alert-danger-retro')) {
                 stopLoading();
@@ -355,18 +334,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 100);
     });
     
-    // Preview da imagem
     const imageUrlInput = document.getElementById('image_url');
     imageUrlInput.addEventListener('blur', function() {
         const url = this.value.trim();
         if (url && url.match(/\.(jpeg|jpg|gif|png|webp)$/i)) {
-            // Remover preview anterior se existir
             const existingPreview = document.getElementById('image-preview');
             if (existingPreview) {
                 existingPreview.remove();
             }
             
-            // Criar preview
             const preview = document.createElement('div');
             preview.id = 'image-preview';
             preview.className = 'mt-2';

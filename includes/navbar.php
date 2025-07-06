@@ -87,5 +87,4 @@
     </div>
 </nav>
 
-<!-- Espaçamento para navbar fixa -->
 <div style="height: 80px;"></div> 

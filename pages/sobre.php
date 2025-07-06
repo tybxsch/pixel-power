@@ -7,7 +7,7 @@ $page_title = 'Sobre';
 <?php include '../includes/navbar.php'; ?>
 
 <div class="container">
-    <!-- Hero Section -->
+    
     <div class="hero-retro">
         <h1 class="mb-4">
             <i class="fas fa-info-circle me-3"></i>

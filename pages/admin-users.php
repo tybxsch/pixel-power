@@ -222,7 +222,6 @@ $page_title = 'Administração - Usuários';
 
 <script>
 function verJogos(userId) {
-    // Aqui você pode implementar uma modal ou redirecionamento para ver os jogos do usuário
     alert('Funcionalidade para ver jogos do usuário ID: ' + userId + ' será implementada!');
 }
 </script>

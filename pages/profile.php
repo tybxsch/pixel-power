@@ -1,7 +1,6 @@
 <?php
 require_once '../config.php';
 
-// Verificar se está logado
 if (!isLoggedIn()) {
     redirect('../pages/login.php');
 }
@@ -10,7 +9,6 @@ $page_title = 'Perfil';
 $error_message = '';
 $success_message = '';
 
-// Buscar dados do usuário
 try {
     $stmt = $pdo->prepare("SELECT * FROM users WHERE id = ?");
     $stmt->execute([$_SESSION['user_id']]);
@@ -20,12 +18,10 @@ try {
         redirect('../pages/login.php');
     }
     
-    // Buscar estatísticas do usuário
     $stmt = $pdo->prepare("SELECT COUNT(*) as total_games, AVG(personal_rating) as avg_rating FROM games WHERE user_id = ?");
     $stmt->execute([$_SESSION['user_id']]);
     $stats = $stmt->fetch();
     
-    // Buscar jogo mais bem avaliado
     $stmt = $pdo->prepare("SELECT title, personal_rating FROM games WHERE user_id = ? ORDER BY personal_rating DESC LIMIT 1");
     $stmt->execute([$_SESSION['user_id']]);
     $favorite_game = $stmt->fetch();
@@ -36,7 +32,6 @@ try {
     $favorite_game = null;
 }
 
-// Processar formulário de edição
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $action = $_POST['action'] ?? '';
     
@@ -44,7 +39,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $username = trim($_POST['username'] ?? '');
         $email = trim($_POST['email'] ?? '');
         
-        // Validações
         if (empty($username) || empty($email)) {
             $error_message = 'Por favor, preencha todos os campos!';
         } elseif (strlen($username) < 3) {
@@ -53,14 +47,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $error_message = 'Por favor, digite um email válido!';
         } else {
             try {
-                // Verificar se username ou email já existem (exceto o próprio usuário)
                 $stmt = $pdo->prepare("SELECT id FROM users WHERE (username = ? OR email = ?) AND id != ?");
                 $stmt->execute([$username, $email, $_SESSION['user_id']]);
                 
                 if ($stmt->fetch()) {
                     $error_message = 'Nome de usuário ou email já estão em uso!';
                 } else {
-                    // Atualizar dados
                     $stmt = $pdo->prepare("UPDATE users SET username = ?, email = ? WHERE id = ?");
                     
                     if ($stmt->execute([$username, $email, $_SESSION['user_id']])) {
@@ -81,7 +73,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $new_password = $_POST['new_password'] ?? '';
         $confirm_new_password = $_POST['confirm_new_password'] ?? '';
         
-        // Validações
         if (empty($current_password) || empty($new_password) || empty($confirm_new_password)) {
             $error_message = 'Por favor, preencha todos os campos da senha!';
         } elseif (!password_verify($current_password, $user['password'])) {
@@ -112,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <?php include '../includes/navbar.php'; ?>
 
 <div class="container">
-    <!-- Hero Section -->
+    
     <div class="hero-retro">
         <h1 class="mb-3">
             <i class="fas fa-user-edit me-3"></i>
@@ -123,7 +114,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </p>
     </div>
 
-    <!-- Mensagens de erro e sucesso -->
     <?php if ($error_message): ?>
         <div class="alert alert-danger" role="alert">
             <i class="fas fa-exclamation-triangle me-2"></i>
@@ -138,7 +128,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     <?php endif; ?>
 
-    <!-- Estatísticas do Usuário -->
     <div class="row mt-5 g-4">
         <div class="col-md-3">
             <div class="card-retro p-4 text-center">
@@ -181,9 +170,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </div>
 
-    <!-- Formulários de Edição -->
     <div class="row mt-5">
-        <!-- Editar Perfil -->
         <div class="col-md-6">
             <div class="card-retro p-4">
                 <h3 class="mb-4">
@@ -231,7 +218,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
         </div>
         
-        <!-- Alterar Senha -->
         <div class="col-md-6">
             <div class="card-retro p-4">
                 <h3 class="mb-4">
@@ -291,7 +277,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </div>
 
-    <!-- Informações Adicionais -->
     <div class="row mt-5">
         <div class="col-12">
             <div class="card-retro p-4">
@@ -329,7 +314,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </div>
 
-    <!-- Links Úteis -->
     <div class="row mt-5">
         <div class="col-12 text-center">
             <div class="card-retro p-4">
@@ -357,7 +341,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </div>
 
 <script>
-// Validação em tempo real para senhas
 document.getElementById('confirm_new_password').addEventListener('input', function() {
     var newPassword = document.getElementById('new_password').value;
     var confirmPassword = this.value;
@@ -369,9 +352,7 @@ document.getElementById('confirm_new_password').addEventListener('input', functi
     }
 });
 
-// Limpar campos de senha após submissão
 document.addEventListener('DOMContentLoaded', function() {
-    // Se houve erro relacionado a senha, limpar campos
     <?php if ($error_message && strpos($error_message, 'senha') !== false): ?>
         document.getElementById('current_password').value = '';
         document.getElementById('new_password').value = '';

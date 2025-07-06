@@ -1,14 +1,12 @@
 <?php
 require_once '../config.php';
 
-// Verificar se está logado
 if (!isLoggedIn()) {
     redirect('../pages/login.php');
 }
 
 $page_title = 'Dashboard';
 
-// Buscar jogos do usuário
 try {
     $stmt = $pdo->prepare("
         SELECT * FROM games 
@@ -18,11 +16,9 @@ try {
     $stmt->execute([$_SESSION['user_id']]);
     $games = $stmt->fetchAll();
     
-    // Estatísticas
     $total_games = count($games);
     $avg_rating = $total_games > 0 ? array_sum(array_column($games, 'personal_rating')) / $total_games : 0;
     
-    // Contagem por plataforma
     $platforms = [];
     foreach ($games as $game) {
         $platform = $game['platform'];
@@ -41,7 +37,6 @@ try {
 <?php include '../includes/navbar.php'; ?>
 
 <div class="container">
-    <!-- Hero Section -->
     <div class="hero-retro">
         <h1 class="mb-3">
             <i class="fas fa-tachometer-alt me-3"></i>
@@ -52,7 +47,6 @@ try {
         </p>
     </div>
 
-    <!-- Estatísticas -->
     <div class="row mt-5 g-4">
         <div class="col-md-4">
             <div class="card-retro p-4 text-center">
@@ -81,7 +75,6 @@ try {
         </div>
     </div>
 
-    <!-- Controles -->
     <div class="row mt-5">
         <div class="col-12">
             <div class="d-flex justify-content-between align-items-center mb-4">
@@ -97,7 +90,6 @@ try {
         </div>
     </div>
 
-    <!-- Lista de Jogos -->
     <?php if (empty($games)): ?>
         <div class="row">
             <div class="col-12">
@@ -119,7 +111,6 @@ try {
             <?php foreach ($games as $game): ?>
                 <div class="col-lg-4 col-md-6">
                     <div class="game-card p-3 h-100">
-                        <!-- Imagem do Jogo -->
                         <?php if ($game['image_url']): ?>
                             <img src="<?php echo htmlspecialchars($game['image_url']); ?>" 
                                  class="card-img-top mb-3" 
@@ -132,7 +123,6 @@ try {
                             </div>
                         <?php endif; ?>
                         
-                        <!-- Informações do Jogo -->
                         <div class="d-flex justify-content-between align-items-start mb-2">
                             <h5 style="color: var(--neon-green); flex: 1; margin-right: 1rem;">
                                 <?php echo htmlspecialchars($game['title']); ?>
@@ -169,7 +159,6 @@ try {
                             </div>
                         </div>
                         
-                        <!-- Comentário -->
                         <?php if ($game['personal_comment']): ?>
                             <div class="mb-3">
                                 <small style="color: var(--neon-blue); font-weight: bold;">Comentário:</small>
@@ -179,7 +168,6 @@ try {
                             </div>
                         <?php endif; ?>
                         
-                        <!-- Ações -->
                         <div class="d-flex gap-2 mt-auto">
                             <a href="edit-game.php?id=<?php echo $game['id']; ?>" 
                                class="btn btn-retro-secondary btn-sm flex-fill">
@@ -197,7 +185,6 @@ try {
             <?php endforeach; ?>
         </div>
 
-        <!-- Resumo por Plataformas -->
         <?php if (!empty($platforms)): ?>
             <div class="row mt-5">
                 <div class="col-12">
@@ -227,7 +214,6 @@ try {
     <?php endif; ?>
 </div>
 
-<!-- Modal de Confirmação de Exclusão -->
 <div class="modal fade" id="deleteModal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content" style="background: var(--card-bg); border: 2px solid var(--neon-pink);">
@@ -271,7 +257,6 @@ function confirmDelete(gameId, gameTitle) {
 
 document.getElementById('confirmDeleteBtn').addEventListener('click', function() {
     if (gameToDelete) {
-        // Criar formulário para deletar
         const form = document.createElement('form');
         form.method = 'POST';
         form.action = '../actions/delete-game.php';

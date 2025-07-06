@@ -1,7 +1,4 @@
-// Efeitos Retrô JavaScript
 document.addEventListener('DOMContentLoaded', function() {
-    
-    // Efeito de digitação para títulos
     function typeWriter(element, text, speed = 100) {
         let i = 0;
         element.innerHTML = '';
@@ -15,14 +12,12 @@ document.addEventListener('DOMContentLoaded', function() {
         type();
     }
 
-    // Aplicar efeito de digitação nos títulos principais
     const mainTitle = document.querySelector('.hero-title');
     if (mainTitle) {
         const originalText = mainTitle.textContent;
         typeWriter(mainTitle, originalText, 150);
     }
 
-    // Efeito de brilho nos cards ao passar o mouse
     const cards = document.querySelectorAll('.card-retro, .game-card');
     cards.forEach(card => {
         card.addEventListener('mouseenter', function() {
@@ -34,11 +29,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Efeito de glitch aleatório
     function randomGlitch() {
         const glitchElements = document.querySelectorAll('.glitch');
         glitchElements.forEach(element => {
-            if (Math.random() < 0.1) { // 10% de chance
+            if (Math.random() < 0.1) {
                 element.style.animation = 'glitch 0.3s ease-in-out';
                 setTimeout(() => {
                     element.style.animation = '';
@@ -47,10 +41,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Executar glitch aleatório a cada 3 segundos
     setInterval(randomGlitch, 3000);
 
-    // Efeito de scroll suave para links âncora
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -64,7 +56,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Animação de entrada para elementos
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -78,12 +69,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
 
-    // Observar todos os cards e elementos animáveis
     document.querySelectorAll('.card-retro, .game-card, .hero-retro').forEach(el => {
         observer.observe(el);
     });
 
-    // Efeito de partículas no fundo (simplificado)
     function createParticle() {
         const particle = document.createElement('div');
         particle.style.cssText = `
@@ -108,10 +97,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 8000);
     }
 
-    // Criar partículas ocasionalmente
     setInterval(createParticle, 2000);
 
-    // CSS para animação das partículas
     if (!document.querySelector('#particle-style')) {
         const style = document.createElement('style');
         style.id = 'particle-style';
@@ -136,7 +123,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.head.appendChild(style);
     }
 
-    // Validação de formulários com estilo retrô
     const forms = document.querySelectorAll('form');
     forms.forEach(form => {
         form.addEventListener('submit', function(e) {
@@ -156,13 +142,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (hasErrors) {
                 e.preventDefault();
-                // Mostrar mensagem de erro estilizada
                 showRetroAlert('Por favor, preencha todos os campos obrigatórios!', 'error');
             }
         });
     });
 
-    // Função para mostrar alertas estilizados
     window.showRetroAlert = function(message, type = 'success') {
         const alertDiv = document.createElement('div');
         const alertClass = type === 'error' ? 'alert-danger-retro' : 'alert-retro';
@@ -185,7 +169,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         document.body.appendChild(alertDiv);
 
-        // Auto-remover após 5 segundos
         setTimeout(() => {
             if (alertDiv.parentNode) {
                 alertDiv.style.animation = 'slideOutRight 0.5s ease-in';
@@ -197,7 +180,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }, 5000);
 
-        // Botão de fechar
+        const closeBtn = alertDiv.querySelector('.btn-close');
         alertDiv.querySelector('.btn-close').addEventListener('click', () => {
             alertDiv.style.animation = 'slideOutRight 0.5s ease-in';
             setTimeout(() => {
@@ -208,7 +191,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     };
 
-    // CSS para animações de alerta
     if (!document.querySelector('#alert-animations')) {
         const style = document.createElement('style');
         style.id = 'alert-animations';
@@ -237,7 +219,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.head.appendChild(style);
     }
 
-    // Konami Code easter egg! 🎮
     let konamiCode = [];
     const sequence = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
     
@@ -259,7 +240,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // CSS para efeito rainbow do Konami Code
     if (!document.querySelector('#konami-style')) {
         const style = document.createElement('style');
         style.id = 'konami-style';
@@ -275,7 +255,6 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('🎮 Pixel Power carregado! Digite ↑↑↓↓←→←→BA para ativar o Easter Egg! 🎮');
 });
 
-// Função global para loading
 window.showLoading = function(element) {
     const originalContent = element.innerHTML;
     element.innerHTML = '<span class="loading-retro"></span> Carregando...';

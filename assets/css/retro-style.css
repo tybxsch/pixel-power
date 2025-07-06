@@ -25,7 +25,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Efeito de grid retrô no fundo */
 body::before {
     content: '';
     position: fixed;
@@ -46,7 +45,6 @@ body::before {
     100% { transform: translate(50px, 50px); }
 }
 
-/* Títulos com efeito neon */
 h1, h2, h3 {
     font-family: 'Press Start 2P', cursive;
     text-transform: uppercase;
@@ -78,7 +76,6 @@ h3 {
     50% { opacity: 0.8; }
 }
 
-/* Navbar retrô */
 .navbar-retro {
     background: rgba(26, 26, 46, 0.95) !important;
     backdrop-filter: blur(10px);
@@ -107,7 +104,6 @@ h3 {
     transform: translateY(-2px);
 }
 
-/* Botões retrô */
 .btn-retro {
     background: linear-gradient(45deg, var(--neon-purple), var(--neon-pink));
     border: 2px solid var(--neon-purple);
@@ -139,7 +135,6 @@ h3 {
     box-shadow: 0 0 25px rgba(0, 255, 65, 0.6);
 }
 
-/* Cards retrô */
 .card-retro {
     background: rgba(26, 26, 46, 0.9);
     border: 2px solid var(--neon-blue);
@@ -172,7 +167,6 @@ h3 {
     border-color: var(--neon-green);
 }
 
-/* Formulários retrô */
 .form-retro .form-control {
     background: rgba(26, 26, 46, 0.8);
     border: 2px solid var(--neon-blue);
@@ -202,7 +196,6 @@ h3 {
     letter-spacing: 1px;
 }
 
-/* Hero section */
 .hero-retro {
     background: linear-gradient(135deg, rgba(179, 0, 255, 0.1), rgba(0, 191, 255, 0.1));
     border: 2px solid var(--neon-purple);
@@ -214,6 +207,11 @@ h3 {
     margin: 2rem 0;
 }
 
+.hero-retro * {
+    position: relative;
+    z-index: 1;
+}
+
 .hero-retro::before {
     content: '';
     position: absolute;
@@ -223,6 +221,7 @@ h3 {
     height: 200%;
     background: radial-gradient(circle, rgba(179, 0, 255, 0.1) 0%, transparent 70%);
     animation: rotate 10s linear infinite;
+    z-index: -1;
 }
 
 @keyframes rotate {
@@ -230,7 +229,6 @@ h3 {
     100% { transform: rotate(360deg); }
 }
 
-/* Game cards específicos */
 .game-card {
     background: var(--card-bg);
     border: 2px solid var(--neon-green);
@@ -255,7 +253,6 @@ h3 {
     font-weight: bold;
 }
 
-/* Animações e efeitos especiais */
 .glitch {
     animation: glitch 2s infinite;
 }
@@ -277,7 +274,6 @@ h3 {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Scrollbar personalizada */
 ::-webkit-scrollbar {
     width: 12px;
 }
@@ -295,7 +291,6 @@ h3 {
     background: linear-gradient(var(--neon-blue), var(--neon-green));
 }
 
-/* Responsividade */
 @media (max-width: 768px) {
     h1 { font-size: 1.8rem; }
     h2 { font-size: 1.4rem; }
@@ -311,7 +306,6 @@ h3 {
     }
 }
 
-/* Alerta personalizado */
 .alert-retro {
     background: linear-gradient(45deg, rgba(0, 255, 65, 0.1), rgba(0, 191, 255, 0.1));
     border: 2px solid var(--neon-green);
@@ -325,7 +319,6 @@ h3 {
     border: 2px solid var(--neon-pink);
 }
 
-/* Loading animation */
 .loading-retro {
     display: inline-block;
     width: 20px;

@@ -1,4 +1,3 @@
-    <!-- Footer -->
     <footer class="mt-5" style="background: var(--card-bg); border-top: 2px solid var(--neon-purple); padding: 2rem 0;">
         <div class="container">
             <div class="row">
@@ -24,25 +23,6 @@
                         <?php endif; ?>
                     </ul>
                 </div>
-                <div class="col-md-3">
-                    <h6 style="color: var(--neon-green); text-transform: uppercase; font-weight: bold;">
-                        Conecte-se
-                    </h6>
-                    <div class="mt-3">
-                        <a href="#" class="me-3" style="color: var(--neon-blue); font-size: 1.5rem; text-decoration: none;">
-                            <i class="fab fa-facebook"></i>
-                        </a>
-                        <a href="#" class="me-3" style="color: var(--neon-pink); font-size: 1.5rem; text-decoration: none;">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="me-3" style="color: var(--neon-green); font-size: 1.5rem; text-decoration: none;">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" style="color: var(--neon-yellow); font-size: 1.5rem; text-decoration: none;">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                    </div>
-                </div>
             </div>
             <hr style="border-color: var(--neon-purple); margin: 2rem 0;">
             <div class="row">
@@ -58,10 +38,8 @@
         </div>
     </footer>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- Custom JS -->
     <script src="<?php echo getAssetPath('assets/js/retro-effects.js'); ?>"></script>
 </body>
 </html> 

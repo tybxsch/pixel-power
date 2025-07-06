@@ -1,7 +1,6 @@
 <?php
 require_once '../config.php';
 
-// Se já estiver logado, redirecionar
 if (isLoggedIn()) {
     redirect('../pages/dashboard.php');
 }
@@ -9,7 +8,6 @@ if (isLoggedIn()) {
 $page_title = 'Login';
 $error_message = '';
 
-// Processar login
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = trim($_POST['username'] ?? '');
     $password = $_POST['password'] ?? '';
@@ -42,7 +40,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6 col-lg-5">
-            <!-- Hero Section -->
             <div class="hero-retro text-center mb-4">
                 <h1 class="mb-3">
                     <i class="fas fa-sign-in-alt me-2"></i>
@@ -53,7 +50,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </p>
             </div>
 
-            <!-- Login Form -->
             <div class="card-retro p-4">
                 <?php if ($error_message): ?>
                     <div class="alert alert-danger-retro mb-4">
@@ -109,7 +105,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
             </div>
 
-            <!-- Login Tips -->
             <div class="card-retro p-4 mt-4">
                 <h5 style="color: var(--neon-green); text-align: center; margin-bottom: 1rem;">
                     <i class="fas fa-lightbulb me-2"></i>
@@ -137,7 +132,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </div>
 
 <script>
-// Adicionar efeitos especiais ao formulário de login
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('form');
     const submitBtn = form.querySelector('button[type="submit"]');
@@ -145,7 +139,6 @@ document.addEventListener('DOMContentLoaded', function() {
     form.addEventListener('submit', function() {
         const stopLoading = showLoading(submitBtn);
         
-        // Se houver erro, parar o loading após um tempo
         setTimeout(() => {
             if (document.querySelector('.alert-danger-retro')) {
                 stopLoading();
@@ -153,7 +146,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 100);
     });
     
-    // Efeito nos inputs
     const inputs = document.querySelectorAll('.form-control');
     inputs.forEach(input => {
         input.addEventListener('focus', function() {
