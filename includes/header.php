@@ -15,6 +15,6 @@
     <meta name="keywords" content="jogos clássicos, ranking, super nintendo, mega drive, playstation">
     <meta name="author" content="Pixel Power">
     
-    <link rel="icon" type="image/x-icon" href="<?php echo SITE_URL; ?>/assets/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="<?php echo SITE_URL; ?>">
 </head>
 <body class="fade-in"> 

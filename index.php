@@ -7,6 +7,14 @@ $page_title = 'Início';
 <?php include 'includes/navbar.php'; ?>
 
 <div class="container">
+    <?php if (isset($_GET['deleted']) && $_GET['deleted'] == '1'): ?>
+        <div class="alert alert-success text-center" style="margin-top: 20px; background: rgba(0, 255, 0, 0.2); border: 1px solid var(--neon-green); color: #fff;">
+            <i class="fas fa-check-circle me-2"></i>
+            <strong>Conta deletada com sucesso!</strong><br>
+            Sua conta e todos os seus dados foram removidos permanentemente do sistema. 
+            Obrigada por ter usado o Pixel Power! 🎮
+        </div>
+    <?php endif; ?>
     <div class="hero-retro">
         <h1 class="hero-title mb-4">
             <i class="fas fa-gamepad me-3"></i>

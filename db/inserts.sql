@@ -1,3 +1,4 @@
+-- Esse insert é apenas para teste simples, por isso a senha não está criptografada. Quando feito um insert de usuário através do formulário, a senha é criada com a função password_hash.
 INSERT INTO users (username, email, password) VALUES
 ('retrogamer', 'retro@games.com', 'senha123'),
 ('pixelmaster', 'pixel@power.com', 'senha456');

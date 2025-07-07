@@ -95,6 +95,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $error_message = 'Erro no sistema. Tente novamente!';
             }
         }
+    } elseif ($action == 'delete_account') {
+        $password_confirmation = $_POST['password_confirmation'] ?? '';
+        $delete_confirmation = $_POST['delete_confirmation'] ?? '';
+        
+        if (empty($password_confirmation)) {
+            $error_message = 'Por favor, digite sua senha para confirmar!';
+        } elseif ($delete_confirmation !== 'DELETAR') {
+            $error_message = 'Por favor, digite "DELETAR" para confirmar!';
+        } elseif (!password_verify($password_confirmation, $user['password'])) {
+            $error_message = 'Senha incorreta!';
+        } else {
+            try {
+                $stmt = $pdo->prepare("DELETE FROM games WHERE user_id = ?");
+                $stmt->execute([$_SESSION['user_id']]);
+                
+                $stmt = $pdo->prepare("DELETE FROM users WHERE id = ?");
+                
+                if ($stmt->execute([$_SESSION['user_id']])) {
+                    session_destroy();  
+                    header('Location: ../index.php?deleted=1');
+                    exit();
+                } else {
+                    $error_message = 'Erro ao deletar conta. Tente novamente!';
+                }
+            } catch (PDOException $e) {
+                $error_message = 'Erro no sistema. Tente novamente!';
+            }
+        }
     }
 }
 ?>
@@ -278,6 +306,69 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 
     <div class="row mt-5">
+        <div class="col-md-12">
+            <div class="card-retro p-4" style="border: 2px solid var(--neon-red); background: rgba(255, 0, 0, 0.1);">
+                <h3 class="mb-4 text-center" style="color: var(--neon-red);">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    Zona de Perigo
+                </h3>
+                
+                <div class="alert" style="background: rgba(255, 0, 0, 0.2); border: 1px solid var(--neon-red); color: #fff;">
+                    <h5><i class="fas fa-skull-crossbones me-2"></i>Deletar Conta Permanentemente</h5>
+                    <p class="mb-0">
+                        <strong>ATENÇÃO:</strong> Esta ação é irreversível! Todos os seus dados, incluindo jogos cadastrados, 
+                        serão permanentemente removidos do sistema. Você não poderá recuperar sua conta após esta ação.
+                    </p>
+                </div>
+                
+                <form method="POST" class="form-retro mt-4" onsubmit="return confirmDelete()">
+                    <input type="hidden" name="action" value="delete_account">
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="password_confirmation" class="form-label">
+                                    <i class="fas fa-key me-2"></i>
+                                    Digite sua senha para confirmar
+                                </label>
+                                <input type="password" 
+                                       class="form-control" 
+                                       id="password_confirmation" 
+                                       name="password_confirmation" 
+                                       required
+                                       style="border-color: var(--neon-red);">
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="delete_confirmation" class="form-label">
+                                    <i class="fas fa-keyboard me-2"></i>
+                                    Digite "DELETAR" para confirmar
+                                </label>
+                                <input type="text" 
+                                       class="form-control" 
+                                       id="delete_confirmation" 
+                                       name="delete_confirmation" 
+                                       placeholder="Digite: DELETAR"
+                                       required
+                                       style="border-color: var(--neon-red);">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button type="submit" class="btn" style="background: var(--neon-red); color: #000; border: none; font-weight: bold;">
+                            <i class="fas fa-trash-alt me-2"></i>
+                            DELETAR MINHA CONTA PERMANENTEMENTE
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
         <div class="col-12">
             <div class="card-retro p-4">
                 <h3 class="text-center mb-4">
@@ -351,6 +442,10 @@ document.getElementById('confirm_new_password').addEventListener('input', functi
         this.setCustomValidity('');
     }
 });
+
+function confirmDelete() {
+    return confirm('🚨 ÚLTIMA CONFIRMAÇÃO 🚨\n\nVocê tem ABSOLUTA CERTEZA de que deseja deletar sua conta?\n\n❌ Esta ação é IRREVERSÍVEL!\n❌ Todos os seus jogos serão perdidos!\n❌ Você não poderá recuperar sua conta!\n\nClique em "OK" apenas se tiver certeza TOTAL.');
+}
 
 document.addEventListener('DOMContentLoaded', function() {
     <?php if ($error_message && strpos($error_message, 'senha') !== false): ?>
